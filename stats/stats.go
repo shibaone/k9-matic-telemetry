@@ -82,6 +82,9 @@ func Dailer(cfg *config.Config) error {
 	errTimer := time.NewTimer(0)
 	defer errTimer.Stop()
 	for {
+		// Wait for the timer to expire before attempting to connect
+		<-errTimer.C
+		
 		// Resolve the URL, defaulting to TLS, but falling back to none too
 		path := fmt.Sprintf("ws://%s/api", cfg.StatsDetails.NetStatsIPAddress)
 		urls := []string{path}
