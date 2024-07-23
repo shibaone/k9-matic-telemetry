@@ -14,9 +14,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Calling dailer to establish connection with netstats and
+	// Calling dialer to establish connection with netstats and
 	// report metrics to the dashboard
-	err = stats.Dailer(cfg)
+	err = stats.Dialer(cfg)
 	if err != nil {
 		log.Printf("Error while establishing a socket connection : %v", err)
 	}

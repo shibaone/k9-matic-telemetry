@@ -78,7 +78,7 @@ type authMsg struct {
 	Secret string   `json:"secret"`
 }
 
-func Dailer(cfg *config.Config) error {
+func Dialer(cfg *config.Config) error {
 	errTimer := time.NewTimer(0)
 	defer errTimer.Stop()
 	for {
