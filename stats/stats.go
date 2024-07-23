@@ -108,14 +108,14 @@ func Dailer(cfg *config.Config) error {
 
 		if err != nil {
 			log.Printf("Stats server unreachable : %v", err)
-			errTimer.Reset(10 * time.Second)
+			errTimer.Reset(cfg.StatsDetails.RetryDelay)
 			continue
 		}
 
 		if err = login(conn, cfg); err != nil {
 			log.Printf("Stats login failed : %v", err)
 			conn.conn.Close()
-			errTimer.Reset(10 * time.Second)
+			errTimer.Reset(cfg.StatsDetails.RetryDelay)
 			continue
 		}
 
