@@ -22,11 +22,11 @@ type (
 	}
 
 	StatsDetails struct {
-		SecretKey         string `mapstructure:"secret_key"`
-		Node              string `mapstructure:"node"`
-		NetStatsIPAddress string `mapstructure:"net_stats_ip"`
-		Port              int    `mapstructure:"port"`
-		Host              string `mapstructure:"host"`
+		SecretKey         string        `mapstructure:"secret_key"`
+		Node              string        `mapstructure:"node"`
+		NetStatsIPAddress string        `mapstructure:"net_stats_ip"`
+		Port              int           `mapstructure:"port"`
+		Host              string        `mapstructure:"host"`
 		RetryDelay        time.Duration `mapstructure:"retry_delay"`
 	}
 
@@ -51,6 +51,10 @@ func ReadFromFile() (*Config, error) {
 	v.AddConfigPath(".")
 	v.AddConfigPath(configPath)
 	v.SetConfigName("config")
+
+	// Set default values
+	v.SetDefault("stats_details.retry_delay", "5s")
+
 	if err := v.ReadInConfig(); err != nil {
 		log.Fatalf("error while reading config.toml: %v", err)
 	}
@@ -60,9 +64,19 @@ func ReadFromFile() (*Config, error) {
 		log.Fatalf("error unmarshaling config.toml to application config: %v", err)
 	}
 
+	// Ensure RetryDelay is properly parsed
+	if cfg.StatsDetails.RetryDelay == 0 {
+		cfg.StatsDetails.RetryDelay, err = time.ParseDuration(v.GetString("stats_details.retry_delay"))
+		if err != nil {
+			log.Fatalf("error parsing retry_delay: %v", err)
+		}
+	}
+
 	if err := cfg.Validate(); err != nil {
 		log.Fatalf("error occurred in config validation: %v", err)
 	}
+
+	log.Printf("Configured retry delay: %v", cfg.StatsDetails.RetryDelay)
 
 	return &cfg, nil
 }
