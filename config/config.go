@@ -26,6 +26,7 @@ type (
 		NetStatsIPAddress string `mapstructure:"net_stats_ip"`
 		Port              int    `mapstructure:"port"`
 		Host              string `mapstructure:"host"`
+		RetryDelay        time.Duration `mapstructure:"retry_delay"`
 	}
 
 	// Config defines all the configurations required for the app
