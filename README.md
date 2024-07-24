@@ -156,7 +156,8 @@ node = "K9 Finance DAO Validator"
 # **Shibarium (Mainnet):**
 # - http://heimdall-shibarium-eth-stats.shibariumscan.io:3000/
 net_stats_ip = "http://heimdall-shibarium-eth-stats.shibariumscan.io:3000/"
-retry_delay = "500ms"
+# retry_delay can be a time.Duration: "500ms", "1s", 2m", etc.
+retry_delay = "1s"
 ```
 
 > **Note**: `retry_delay` is the time interval to wait when there is an error. (Like "Stats login failed : unauthorized"). Previously there was a 10 second delay coded into the Dialer function, but this delay was not respected. Now this is configurable and actually does wait.
