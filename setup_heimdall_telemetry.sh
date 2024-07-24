@@ -111,7 +111,7 @@ cd matic-telemetry
 go mod tidy
 go build -o heimdall-telemetry
 sudo mv heimdall-telemetry /usr/bin/
-sudo chown root:root /usr/bin/heimdall-telemetry
+sudo chown $USER:$USER /usr/bin/heimdall-telemetry
 
 # Create the telemetry config
 
@@ -119,7 +119,7 @@ sudo chown root:root /usr/bin/heimdall-telemetry
 # configPath := path.Join(usr.HomeDir, `.telemetry/config/`)
 # so link this directory to our config directory
 mkdir -p ~/.telemetry/config
-sudo cp example.config.toml ~/.telemetry/config/config.toml
+cp -f example.config.toml ~/.telemetry/config/config.toml
 
 # Edit the telemetry config
 
