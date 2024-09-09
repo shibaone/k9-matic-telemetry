@@ -104,8 +104,8 @@ sudo apt update
 sudo apt install -y golang-go
 
 cd ~
-git clone https://github.com/K9-Finance-DAO/matic-telemetry.git
-cd matic-telemetry
+git clone https://github.com/shibaone/k9-matic-telemetry.git
+cd k9-matic-telemetry
 
 # Build the telemetry service
 go mod tidy
