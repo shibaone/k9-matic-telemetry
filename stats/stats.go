@@ -84,9 +84,9 @@ func Dialer(cfg *config.Config) error {
 	for {
 		// Wait for the timer to expire before attempting to connect
 		<-errTimer.C
-		
+
 		// Resolve the URL, defaulting to TLS, but falling back to none too
-		path := fmt.Sprintf("ws://%s/api", cfg.StatsDetails.NetStatsIPAddress)
+		path := fmt.Sprintf("wss://%s/api", cfg.StatsDetails.NetStatsIPAddress)
 		urls := []string{path}
 		var (
 			conn *connWrapper
