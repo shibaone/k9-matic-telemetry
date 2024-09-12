@@ -79,7 +79,6 @@ type authMsg struct {
 }
 
 func Dialer(cfg *config.Config) error {
-	fmt.Println(cfg)
 	errTimer := time.NewTimer(0)
 	defer errTimer.Stop()
 	for {
@@ -87,8 +86,10 @@ func Dialer(cfg *config.Config) error {
 		<-errTimer.C
 
 		// Resolve the URL, defaulting to TLS, but falling back to none too
+		fmt.Println(cfg.StatsDetails.NetStatsIPAddress, "asd")
 		path := fmt.Sprintf("wss://%s/api", cfg.StatsDetails.NetStatsIPAddress)
 		urls := []string{path}
+		fmt.Println(urls, "assd")
 		var (
 			conn *connWrapper
 			err  error
