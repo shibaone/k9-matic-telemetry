@@ -79,6 +79,7 @@ type authMsg struct {
 }
 
 func Dialer(cfg *config.Config) error {
+	fmt.Println(cfg)
 	errTimer := time.NewTimer(0)
 	defer errTimer.Stop()
 	for {
