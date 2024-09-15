@@ -39,7 +39,7 @@ Telemetry data for Heimdall nodes on Polygon Mainnet and Mumbai-testnet can be f
 
 Telemetry data for Heimdall nodes on Shibarium Mainnet and Puppynet testnet can be found here:
 - [http://heimdall-shibarium-eth-stats.shibariumscan.io:3000/](http://heimdall-shibarium-eth-stats.shibariumscan.io:3000/)
-- [http://heimdall-puppynet.shibariumscan.io:3000/](http://heimdall-puppynet.shibariumscan.io:3000/) 
+- [https://puppynet-heimdall-ethstat.shib.io/](https://puppynet-heimdall-ethstat.shib.io/) 
 
 
 To export your nodes telemetry data to these dashboards do the following:-
@@ -137,6 +137,7 @@ sudo chown root:root /usr/bin/heimdall-telemetry
 Edit `~/.telemetry/config/config.toml`. 
 
 ```sh
+mkdir -p ~/.telemetry/config
 nano ~/.telemetry/config/config.toml
 ```
 
@@ -152,10 +153,10 @@ heimdall_lcd_endpoint = "http://localhost:1317"
 secret_key = "${secret_key}" 
 node = "K9 Finance DAO Validator"
 # **Puppynet (Testnet):**
-# - http://heimdall-puppynet.shibariumscan.io:3000/
+# - https://puppynet-heimdall-ethstat.shib.io/
 # **Shibarium (Mainnet):**
 # - http://heimdall-shibarium-eth-stats.shibariumscan.io:3000/
-net_stats_ip = "http://heimdall-shibarium-eth-stats.shibariumscan.io:3000/"
+net_stats_ip = "https://puppynet-heimdall-ethstat.shib.io/"
 # retry_delay can be a time.Duration: "500ms", "1s", 2m", etc.
 retry_delay = "1s"
 ```
