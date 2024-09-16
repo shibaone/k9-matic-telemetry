@@ -149,19 +149,22 @@ heimdall_rpc_endpoint = "http://localhost:26657"
 heimdall_lcd_endpoint = "http://localhost:1317"
 
 [stats_details]
+# Name to appear in telemetry dashboard
+node = "K9 Finance DAO Validator"
+
 # ask Shib Team for secret_key
 secret_key = "${secret_key}" 
-node = "K9 Finance DAO Validator"
-# **Puppynet (Testnet):**
+
+# **ETH Stats URLs:**
 # - https://puppynet-heimdall-ethstat.shib.io/
-# **Shibarium (Mainnet):**
-# - http://heimdall-shibarium-eth-stats.shibariumscan.io:3000/
-net_stats_ip = "https://puppynet-heimdall-ethstat.shib.io/"
+# - https://shibarium-heimdall-ethstat.shib.io/
+net_stats_ip = "shibarium-heimdall-ethstat.shib.io:443"
+
 # retry_delay can be a time.Duration: "500ms", "1s", 2m", etc.
 retry_delay = "1s"
 ```
 
-> **Note**: `retry_delay` is the time interval to wait when there is an error. (Like "Stats login failed : unauthorized"). Previously there was a 10 second delay coded into the Dialer function, but this delay was not respected. Now this is configurable and actually does wait.
+> **Note**: `retry_delay` is the time interval to wait when there is an error. (Like "Stats login failed : unauthorized"). Previously there was a 10 second delay coded into the Dialer function, but this delay was not respected. Now this is configurable and actually does wait the specified time.
 
 ### Create Systemd Service
 
