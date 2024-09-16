@@ -111,19 +111,21 @@ View the logs using
 
 # **Shibarium**: Heimdall Telemetry Setup
 
-> See: `setup_heimdall_telemetry.sh` to automate the setup process. (Requires slight modification as this script is hard coded for K9 Finance Shibarium validators).
+> [!TIP]
+> See: `setup_heimdall_telemetry.sh` to automate the setup process.
+>
+> (***Requires slight modification** as this script is hard coded for K9 Finance Shibarium validators*).
 
 ## Manual Setup
 
 Install Go and build the telemetry service:
 
 ```sh
-# git clone https://github.com/vitwit/matic-telemetry.git
-git clone https://github.com/K9-Finance-DAO/matic-telemetry.git
 sudo apt update
 sudo apt install -y golang-go
 
 cd ~
+# git clone https://github.com/vitwit/matic-telemetry.git
 git clone https://github.com/K9-Finance-DAO/matic-telemetry.git
 cd matic-telemetry
 
@@ -164,7 +166,8 @@ net_stats_ip = "shibarium-heimdall-ethstat.shib.io:443"
 retry_delay = "1s"
 ```
 
-> **Note**: `retry_delay` is the time interval to wait when there is an error. (Like "Stats login failed : unauthorized"). Previously there was a 10 second delay coded into the Dialer function, but this delay was not respected. Now this is configurable and actually does wait the specified time.
+> [!NOTE]
+> `retry_delay` is the time interval to wait when there is an error. (Like "Stats login failed : unauthorized"). Previously there was a 10 second delay coded into the Dialer function, but this delay was not respected. Now this is configurable and actually does wait the specified time.
 
 ### Create Systemd Service
 
